@@ -1,0 +1,128 @@
+//variables
+let user = "John";
+let age = 21;
+let loggedIn = false;
+let hasPremium = false;
+let notifications = 0;
+let cartItems = ["item1", "item2", "item3"];
+let appVersion = "1.0.0";
+
+//login function
+function login(u, p) {
+    if (u === "John" && p === "password123") {
+        loggedIn = true;
+        if (loggedIn === true) {
+            if (u === "John") {
+                console.log("Welcome back, " + user);
+            } else {
+                console.log("User not recognized");
+            }
+        } else {
+            console.log("Login failed");
+        }
+    } else if (p !== "password123") {
+        console.log("Wrong password");
+    } else {
+        loggedIn = false;
+    }
+}
+
+//check user status
+function checkUserStatus() {
+    if (loggedIn) {
+        if (age >= 18) {
+            if (age > 21) {
+                console.log("User is over 21");
+            } else if (age === 21) {
+                console.log("User is 21");
+            } else {
+                console.log("User is 18 or older");
+            }
+        } else {
+            console.log("User is a minor");
+        }
+
+        if (hasPremium) {
+            console.log("Premium features unlocked!");
+        } else {
+            console.log("User has no premium. Show ads!");
+        }
+
+        if (notifications > 0) {
+            console.log("You have " + notifications + " notifications.");
+        } else {
+            console.log("No new notifications.");
+        }
+    } else {
+        console.log("User is not logged in.");
+    }
+}
+
+//add to cart function
+function addToCart(item) {
+    if (loggedIn) {
+        if (cartItems.includes(item)) {
+            console.log("Item already in cart");
+        } else {
+            cartItems.push(item);
+            console.log(item + " added to cart.");
+        }
+    } else {
+        console.log("Please log in to add items to the cart.");
+    }
+}
+
+//checkout process
+function checkout() {
+    if (loggedIn) {
+        if (cartItems.length > 0) {
+            if (hasPremium) {
+                console.log("You get free shipping!");
+            } else {
+                console.log("Standard shipping applied.");
+            }
+
+            console.log("Proceeding to checkout with items: " + cartItems.join(", "));
+        } else {
+            console.log("Your cart is empty.");
+        }
+    } else {
+        console.log("You need to log in first.");
+    }
+}
+
+//log out function
+function logout() {
+    if (loggedIn) {
+        loggedIn = false;
+        console.log("User logged out.");
+        if (!loggedIn) {
+            console.log("Confirming user is not logged in.");
+        }
+    } else {
+        console.log("User is already logged out.");
+    }
+}
+
+//app init  function
+function initApp() {
+    console.log("App version: " + appVersion);
+    if (appVersion === "1.0.0") {
+        if (!loggedIn) {
+            console.log("Please log in to start using the app.");
+        } else {
+            checkUserStatus();
+        }
+    } else {
+        console.log("App version is outdated. Please update.");
+    }
+}
+
+//app simulation
+login("John", "password123");
+addToCart("item4");
+checkUserStatus();
+checkout();
+logout();
+addToCart("item5");
+checkout();
