@@ -1,5 +1,5 @@
 //variables
-let user = "John";
+let user = "Carlos";
 let age = 21;
 let loggedIn = false;
 let hasPremium = false;
@@ -9,10 +9,10 @@ let appVersion = "1.0.0";
 
 //login function
 function login(u, p) {
-    if (u === "John" && p === "password123") {
+    if (u === "Carlos" && p === "password123") {
         loggedIn = true;
         if (loggedIn === true) {
-            if (u === "John") {
+            if (u === "Carlos") {
                 console.log("Welcome back, " + user);
             } else {
                 console.log("User not recognized");
@@ -58,7 +58,6 @@ function checkUserStatus() {
     }
 }
 
-//add to cart function
 function addToCart(item) {
     if (loggedIn) {
         if (cartItems.includes(item)) {
@@ -72,7 +71,6 @@ function addToCart(item) {
     }
 }
 
-//checkout process
 function checkout() {
     if (loggedIn) {
         if (cartItems.length > 0) {
@@ -91,7 +89,6 @@ function checkout() {
     }
 }
 
-//log out function
 function logout() {
     if (loggedIn) {
         loggedIn = false;
@@ -104,7 +101,6 @@ function logout() {
     }
 }
 
-//app init  function
 function initApp() {
     console.log("App version: " + appVersion);
     if (appVersion === "1.0.0") {
@@ -118,8 +114,7 @@ function initApp() {
     }
 }
 
-//app simulation
-login("John", "password123");
+login("Carlos", "password123");
 addToCart("item4");
 checkUserStatus();
 checkout();
